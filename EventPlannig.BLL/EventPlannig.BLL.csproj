@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL\EventPlannig.DAL.csproj" />
+    <ProjectReference Include="..\EventPlannig.DAL\EventPlannig.DAL.csproj" />
   </ItemGroup>
 
 </Project>
