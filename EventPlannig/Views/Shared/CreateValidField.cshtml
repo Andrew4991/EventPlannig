@@ -1,0 +1,35 @@
+﻿@model EventPlannig.DAL.Entities.EventField
+ 
+
+
+<div class="form-group">
+    <label asp-for="@Model.FieldName" class="control-label"></label>
+    <input asp-for="@Model.FieldName" class="form-control" name="CustomFields[@Model.Id].FieldName" />
+    <span asp-validation-for="@Model.FieldName" class="text-danger"></span>
+    @{
+        if (string.IsNullOrEmpty(Model.FieldName)  || Model.FieldName.Length < 3 || Model.FieldName.Length > 50 )
+        {
+        <span class="text-danger field-validation-error" data-valmsg-for="FieldName" data-valmsg-replace="true">Длина имени поля должна быть от 3 до 50 символов</span>
+        }
+    }
+</div>
+
+<div class="form-group">
+    <label asp-for="@Model.FieldValue" class="control-label"></label>
+    <input asp-for="@Model.FieldValue" class="form-control" name="CustomFields[@Model.Id].FieldValue" />
+    <span asp-validation-for="@Model.FieldValue" class="text-danger"></span>
+    @{
+        if (string.IsNullOrEmpty(Model.FieldValue) || Model.FieldValue.Length < 3 || Model.FieldValue.Length > 50)
+        {
+        <span class="text-danger field-validation-error" data-valmsg-for="FieldValue" data-valmsg-replace="true">Длина значения поля должна быть от 3 до 50 символов</span>
+        }
+    }
+</div>
+
+
+
+
+
+
+
+

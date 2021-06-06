@@ -1,0 +1,67 @@
+﻿@model EventPlannig.DAL.Entities.Event
+
+@{
+    ViewData["Title"] = "Создание нового события";
+}
+
+<h2>Заполните форму для создания нового события</h2>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="events">
+                @if (Model != null && Model.CustomFields.Any())
+                {
+                    foreach (var field in Model.CustomFields)
+                    {
+                @Html.Partial("CreateValidField", field);
+                    }
+                }
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <button id="createEvent" class="btn btn-primary">Добавить поле</button>
+        <a asp-action="Index" class="btn btn-primary">Вернуться к списку событий</a>
+
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var eventFieldsCount = @Model.CustomFields.Count;
+            $("#createEvent").click(function () {
+                $.get('@Url.Action("CreateField", "Admin")?id=' + eventFieldsCount, function (data) {
+                    $(data).appendTo(".events")
+                }, 'html');
+                eventFieldsCount++;
+            })
+        });
+    </script>
+
+}

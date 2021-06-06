@@ -1,0 +1,14 @@
+﻿@model int
+
+
+<div class="form-group">
+    <label class="control-label" for="FieldName">Имя поля</label>
+    <input class="form-control" type="text" id="FieldName" name="CustomFields[@Model].FieldName" value="">
+    <span class="text-danger field-validation-valid" data-valmsg-for="FieldName" data-valmsg-replace="true"></span>
+
+    <label class="control-label" for="FieldValue">Значение</label>
+    <input class="form-control" type="text" id="FieldValue" name="CustomFields[@Model].FieldValue" value="">
+    <span class="text-danger field-validation-valid" data-valmsg-for="FieldValue" data-valmsg-replace="true"></span>
+</div>
+
+
